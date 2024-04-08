@@ -4,18 +4,17 @@ import { useEffect, useState } from "react";
 const Trait = ({ studId }) => {
   const [trait, setTrait] = useState("");
 
-  console.log(studId);
-  //   useEffect(() => {
-  const fetchTrait = async () => {
-    const { data } = await axios.get(
-      `http://localhost:5000/api/v1/personality/findTrait/${studId}`
-    );
-    console.log(data);
-    setTrait(data.trait);
-    console.log(trait);
-  };
-  fetchTrait();
-  //   }, [studId]);
+  useEffect(() => {
+   if (studId) {
+    const fetchTrait = async () => {
+        const { data } = await axios.get(
+          `http://localhost:5000/api/v1/personality/findTrait/${studId}`
+        );
+        setTrait(data.trait);
+      };
+      fetchTrait();
+   }
+  }, [studId]);
 
   return (
     <div>

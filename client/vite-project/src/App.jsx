@@ -31,7 +31,7 @@ function App() {
         }
       );
       setResult(data.student);
-      setStudId(result._id);
+      setStudId(data.student._id);
     } catch (err) {
       console.log(err);
     }
@@ -102,7 +102,11 @@ function App() {
 
             <Button type="submit">Submit</Button>
           </form>
-          <Trait studId={studId} />
+          {
+            studId &&(
+              <Trait studId={studId} />
+            )
+          }
         </div>
       </div>
     </>
